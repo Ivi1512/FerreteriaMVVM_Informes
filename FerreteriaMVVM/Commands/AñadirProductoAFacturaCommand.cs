@@ -19,7 +19,8 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            
+            formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
+            formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
         }
 
         private FormularioViewModel formularioViewModel { set; get; }

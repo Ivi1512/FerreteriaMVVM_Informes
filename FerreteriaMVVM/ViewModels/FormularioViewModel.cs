@@ -15,6 +15,7 @@ namespace FerreteriaMVVM.ViewModels
         public ICommand UpdateClientsCommand { get; set; }
         public ICommand CargarProductosCommand { get; set; }
         public ICommand CargarComboProductosFormularioCommand { get; set; }
+        public ICommand AñadirProductoAFacturaCommand { get; set; }
 
         public DateTime FechaElegida { get; set; }
 
@@ -40,14 +41,26 @@ namespace FerreteriaMVVM.ViewModels
             }
         }
 
-        private int cantidad { get; set; }
-        public int Cantidad
+
+        private ObservableCollection<ProductoCantidadModel> listaProductosCantidad { get; set; }
+        public ObservableCollection<ProductoCantidadModel> ListaProductosCantidad
         {
-            get { return cantidad; }
+            get { return listaProductosCantidad; }
             set
             {
-                cantidad = value;
-                OnPropertyChanged(nameof(Cantidad));
+                listaProductosCantidad = value;
+                OnPropertyChanged(nameof(ListaProductosCantidad));
+            }
+        }
+
+        private ProductoCantidadModel productoTabla{ get; set; }
+        public ProductoCantidadModel ProductoTabla
+        {
+            get { return productoTabla; }
+            set
+            {
+                productoTabla = value;
+                OnPropertyChanged(nameof(ProductoTabla));
             }
         }
 
@@ -66,10 +79,13 @@ namespace FerreteriaMVVM.ViewModels
         {
             UpdateClientsCommand = new UpdateClientsCommand(this);
             CargarComboProductosFormularioCommand = new CargarComboProductosFormularioCommand(this);
+            AñadirProductoAFacturaCommand = new AñadirProductoAFacturaCommand(this);
 
+            ListaProductosCantidad = new ObservableCollection<ProductoCantidadModel>();
+            ProductoTabla = new ProductoCantidadModel();
             FechaElegida = DateTime.Today;
             ListaClientes = new ObservableCollection<ClienteModel>();
-            Cantidad = 1;
+            ProductoTabla.Cantidad = 1;
         }
     }
 }

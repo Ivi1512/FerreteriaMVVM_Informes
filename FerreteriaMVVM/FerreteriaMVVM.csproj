@@ -111,6 +111,7 @@
     <Compile Include="Commands\UpdateClientsCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="Models\ClienteModel.cs" />
+    <Compile Include="Models\ProductoCantidadModel.cs" />
     <Compile Include="Models\ProductosModel.cs" />
     <Compile Include="Models\ProveedoresModel.cs" />
     <Compile Include="Models\RequestModel.cs" />
