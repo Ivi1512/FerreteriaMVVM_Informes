@@ -1,0 +1,36 @@
+﻿<Application x:Class="FerreteriaMVVM.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FerreteriaMVVM"
+             xmlns:views="clr-namespace:FerreteriaMVVM.Views"
+             xmlns:viewmodels="clr-namespace:FerreteriaMVVM.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate DataType="{x:Type viewmodels:ProveedoresViewModel}">
+                <views:ProveedoresView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ProductosViewModel}">
+                <views:ProductosView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:BienvenidaViewModel}">
+                <views:BienvenidaView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:FormularioViewModel}">
+                <views:FormularioView/>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Pink.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="Resources/Dictionaries/ImagesSetDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
