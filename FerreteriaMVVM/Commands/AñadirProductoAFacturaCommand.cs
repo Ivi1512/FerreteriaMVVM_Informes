@@ -1,4 +1,5 @@
-﻿using FerreteriaMVVM.ViewModels;
+﻿using FerreteriaMVVM.Models;
+using FerreteriaMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,33 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
+            int lista = formularioViewModel.ListaProductosCantidad.Count();
+
             formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
-            formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
+
+            if (lista == 0)
+            {
+                formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
+            }
+            else
+            {
+                foreach (ProductoCantidadModel p in formularioViewModel.ListaProductosCantidad)
+                {   
+                    if (!p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
+                    {
+                        formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
+                        break;
+                    }
+                    else
+                    {
+                        formularioViewModel.ProductoTabla.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
+                        break;
+                    }
+                }
+
+                formularioViewModel.Total = formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad;
+            } 
+            
         }
 
         private FormularioViewModel formularioViewModel { set; get; }
