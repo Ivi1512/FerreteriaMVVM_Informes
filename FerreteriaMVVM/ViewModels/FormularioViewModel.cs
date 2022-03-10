@@ -98,6 +98,7 @@ namespace FerreteriaMVVM.ViewModels
             FechaElegida = DateTime.Today;
             ListaClientes = new ObservableCollection<ClienteModel>();
             ProductoTabla.Cantidad = 1;
+            Total = 0.0;
         }
     }
 }

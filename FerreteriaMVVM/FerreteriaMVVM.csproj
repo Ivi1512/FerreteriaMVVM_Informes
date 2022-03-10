@@ -127,6 +127,7 @@
     <Compile Include="Services\DBHandler.cs" />
     <Compile Include="Services\Validation.cs" />
     <Compile Include="ViewModels\BienvenidaViewModel.cs" />
+    <Compile Include="ViewModels\ConsultasViewModel.cs" />
     <Compile Include="ViewModels\FormularioViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProductosViewModel.cs" />
@@ -134,6 +135,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\BienvenidaView.xaml.cs">
       <DependentUpon>BienvenidaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsultasView.xaml.cs">
+      <DependentUpon>ConsultasView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FormularioView.xaml.cs">
       <DependentUpon>FormularioView.xaml</DependentUpon>
@@ -161,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BienvenidaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConsultasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +203,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\InformeNumFactura.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

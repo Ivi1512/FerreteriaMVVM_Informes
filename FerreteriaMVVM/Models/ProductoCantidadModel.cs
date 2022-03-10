@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace FerreteriaMVVM.Models
 {
-    class ProductoCantidadModel : INotifyPropertyChanged
+    class ProductoCantidadModel : INotifyPropertyChanged, ICloneable
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
 
         private ProductosModel productoModel { get; set; }

@@ -13,7 +13,12 @@ namespace FerreteriaMVVM.Services.DataSet
     class DataSetHandler
     {
         private static clientesTableAdapter clientesAdapter = new clientesTableAdapter();
+        private static InformesTableAdapter informesAdapter = new InformesTableAdapter();
 
+        public static DataTable GetDataByIdFactura(string id_factura)
+        {
+            return informesAdapter.GetDataByIdFactura(id_factura);
+        }
 
         public static ObservableCollection<ClienteModel> getAllClientes()
         {

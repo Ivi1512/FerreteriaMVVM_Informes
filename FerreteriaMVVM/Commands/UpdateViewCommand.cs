@@ -38,6 +38,10 @@ namespace FerreteriaMVVM.Commands
             {
                 MainViewModel.SelectedViewModel = new FormularioViewModel();
             }
+            else if (vista.Equals("Consultas"))
+            {
+                MainViewModel.SelectedViewModel = new ConsultasViewModel();
+            }
         }
 
         public MainViewModel MainViewModel { set; get; }

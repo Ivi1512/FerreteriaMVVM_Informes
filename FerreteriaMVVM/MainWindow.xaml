@@ -17,11 +17,14 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="BtnBienvenida" Grid.Column="0" Margin="15" Content="Bienvenida" Width="200" Command="{Binding UpdateViewCommand}" CommandParameter="Bienvenida" Click="Btn_Click"/>
             <Button x:Name="BtnProveedores" Grid.Column="1" Margin="15" Content="Proveedores" Width="200" Command="{Binding UpdateViewCommand}" CommandParameter="Proveedores" Click="Btn_Click"/>
             <Button x:Name="BtnProductos" Grid.Column="2" Margin="15" Content="Productos" Width="200" Command="{Binding UpdateViewCommand}" CommandParameter="Productos" Click="Btn_Click"/>
             <Button x:Name="BtnFormulario" Grid.Column="3" Margin="15" Content="Formulario" Width="200" Command="{Binding UpdateViewCommand}" CommandParameter="Formulario" Click="Btn_Click"/>
+            <Button x:Name="BtnConsultas" Grid.Column="4" Margin="15" Content="Consultas" Width="200" Command="{Binding UpdateViewCommand}" CommandParameter="Consultas" Click="Btn_Click"/>
+
         </Grid>
 
         <ContentControl Content="{Binding SelectedViewModel}"/>

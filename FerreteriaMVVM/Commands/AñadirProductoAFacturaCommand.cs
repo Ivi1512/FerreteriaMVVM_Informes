@@ -21,31 +21,37 @@ namespace FerreteriaMVVM.Commands
         public void Execute(object parameter)
         {
             int lista = formularioViewModel.ListaProductosCantidad.Count();
-
-            formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
-
-            if (lista == 0)
+            //formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
+            if(lista == 0)
             {
-                formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
+                Console.WriteLine("cdf");
+                formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
+
             }
             else
             {
                 foreach (ProductoCantidadModel p in formularioViewModel.ListaProductosCantidad)
-                {   
-                    if (!p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
+                {
+                    Console.WriteLine(p.ProductoModel._id);
+                    Console.WriteLine(formularioViewModel.ProductoTabla.ProductoModel._id);
+                    if (p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
                     {
-                        formularioViewModel.ListaProductosCantidad.Add(formularioViewModel.ProductoTabla);
+                        p.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
                         break;
                     }
                     else
                     {
-                        formularioViewModel.ProductoTabla.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
-                        break;
+                        formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
+                        //break;
                     }
                 }
 
-                formularioViewModel.Total = formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad;
-            } 
+            }
+           
+
+            formularioViewModel.Total = formularioViewModel.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+
+
             
         }
 

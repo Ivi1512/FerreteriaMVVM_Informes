@@ -42,24 +42,35 @@ namespace FerreteriaMVVM
                     BtnProveedores.IsEnabled = true;
                     BtnProductos.IsEnabled = true;
                     BtnFormulario.IsEnabled = true;
+                    BtnConsultas.IsEnabled = true;
                     break;
                 case "Proveedores":
                     BtnBienvenida.IsEnabled = true;
                     BtnProveedores.IsEnabled = false;
                     BtnProductos.IsEnabled = true;
                     BtnFormulario.IsEnabled = true;
+                    BtnConsultas.IsEnabled = true;
                     break;
                 case "Productos":
                     BtnBienvenida.IsEnabled = true;
                     BtnProveedores.IsEnabled = true;
                     BtnProductos.IsEnabled = false;
                     BtnFormulario.IsEnabled = true;
+                    BtnConsultas.IsEnabled = true;
                     break;
                 case "Formulario":
                     BtnBienvenida.IsEnabled = true;
                     BtnProveedores.IsEnabled = true;
                     BtnProductos.IsEnabled = true;
                     BtnFormulario.IsEnabled = false;
+                    BtnConsultas.IsEnabled = true;
+                    break;
+                case "Consultas":
+                    BtnBienvenida.IsEnabled = true;
+                    BtnProveedores.IsEnabled = true;
+                    BtnProductos.IsEnabled = true;
+                    BtnFormulario.IsEnabled = true;
+                    BtnConsultas.IsEnabled = false;
                     break;
             }
         }

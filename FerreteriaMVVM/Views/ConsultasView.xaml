@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="FerreteriaMVVM.Views.ConsultasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FerreteriaMVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="850" d:DesignWidth="1500" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="CONSULTAR FACTURAS" HorizontalAlignment="Center" FontSize="50" FontWeight="Black"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="CONSULTAR POR Nº FACTURA" FontSize="25"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,30,0,30">
+            <TextBlock Text="Nº de Factura" FontSize="20"/>
+            <TextBox Width="250"  Margin="60,0,60,0"/>
+            <Button Content="CONSULTA"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="CONSULTAR FACTURAS POR CLIENTE" FontSize="25"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
+            <TextBlock Text="Cliente" FontSize="20"/>
+            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" Margin="60,0,60,0"/>
+            <Button Content="CONSULTA"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="BUSCAR FACTURAS EN UNA FECHA" FontSize="25"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
+            <TextBlock Text="Fecha Factura" FontSize="20"/>
+            <DatePicker Width="200" SelectedDate="{Binding FechaSeleccionada}" Margin="60,0,60,0"/>
+            <Button Content="CONSULTA"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <TextBlock Text="BUSCAR FACTURAS ENTRE FECHAS" FontSize="25"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
+            <TextBlock Text="Cliente" FontSize="20"/>
+            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" Margin="10,0,30,0"/>
+            <TextBlock Text="Fecha Inicio" FontSize="20"/>
+            <DatePicker Width="200" SelectedDate="{Binding FechaInicio}" Margin="10,0,30,0"/>
+            <TextBlock Text="Fecha Fin" FontSize="20"/>
+            <DatePicker Width="200" SelectedDate="{Binding FechaFin}" Margin="10,0,60,0"/>
+            <Button Content="CONSULTA"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
