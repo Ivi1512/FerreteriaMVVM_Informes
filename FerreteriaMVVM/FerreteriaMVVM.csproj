@@ -103,6 +103,7 @@
     <Compile Include="Commands\CrearProveedorCommand.cs" />
     <Compile Include="Commands\EditarProductoCommand.cs" />
     <Compile Include="Commands\EditarProveedoresCommand.cs" />
+    <Compile Include="Commands\EliminarProductoDeFacturaCommand.cs" />
     <Compile Include="Commands\FiltrarTablaProductosCommand.cs" />
     <Compile Include="Commands\LimpiarFormularioProductosCommand.cs" />
     <Compile Include="Commands\LimpiarFormularioCommand.cs" />

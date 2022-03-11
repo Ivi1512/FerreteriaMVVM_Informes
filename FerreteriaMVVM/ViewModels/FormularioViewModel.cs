@@ -76,17 +76,6 @@ namespace FerreteriaMVVM.ViewModels
         }
 
 
-        private double total { get; set; }
-        public double Total
-        {
-            get { return total; }
-            set
-            {
-                total = value;
-                OnPropertyChanged(nameof(Total));
-            }
-        }
-
         public FormularioViewModel()
         {
             UpdateClientsCommand = new UpdateClientsCommand(this);
@@ -98,7 +87,6 @@ namespace FerreteriaMVVM.ViewModels
             FechaElegida = DateTime.Today;
             ListaClientes = new ObservableCollection<ClienteModel>();
             ProductoTabla.Cantidad = 1;
-            Total = 0.0;
         }
     }
 }

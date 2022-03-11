@@ -20,7 +20,27 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            int lista = formularioViewModel.ListaProductosCantidad.Count();
+
+            bool existe = false;
+            foreach (ProductoCantidadModel p in formularioViewModel.ListaProductosCantidad)
+            {
+                if (p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
+                {
+                    p.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
+                    existe = true;
+                    p.Total = p.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+                    break;
+                }
+            }
+            if (!existe) 
+            {
+                formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+                formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
+            }
+
+            //formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+
+            /*int lista = formularioViewModel.ListaProductosCantidad.Count();
             //formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
             if(lista == 0)
             {
@@ -49,10 +69,10 @@ namespace FerreteriaMVVM.Commands
             }
            
 
-            formularioViewModel.Total = formularioViewModel.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+            formularioViewModel.Total = formularioViewModel.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);*/
 
 
-            
+
         }
 
         private FormularioViewModel formularioViewModel { set; get; }
