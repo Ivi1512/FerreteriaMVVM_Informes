@@ -1,5 +1,4 @@
-﻿using FerreteriaMVVM.Models;
-using FerreteriaMVVM.ViewModels;
+﻿using FerreteriaMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Windows.Input;
 
 namespace FerreteriaMVVM.Commands
 {
-    class EliminarProductoDeFacturaCommand : ICommand
+    class GuardarFacturaCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -20,13 +19,11 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            ProductoCantidadModel producto = (ProductoCantidadModel)parameter;
-            formularioViewModel.ListaProductosCantidad.Remove(producto);
+           
         }
 
-
         private FormularioViewModel formularioViewModel { set; get; }
-        public EliminarProductoDeFacturaCommand(FormularioViewModel formularioViewModel)
+        public GuardarFacturaCommand(FormularioViewModel formularioViewModel)
         {
             this.formularioViewModel = formularioViewModel;
         }

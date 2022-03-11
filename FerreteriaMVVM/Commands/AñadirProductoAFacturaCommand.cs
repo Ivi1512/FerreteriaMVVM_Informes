@@ -18,61 +18,29 @@ namespace FerreteriaMVVM.Commands
             return true;
         }
 
+        double sumatotal = 0.0;
+
         public void Execute(object parameter)
         {
-
+            
             bool existe = false;
             foreach (ProductoCantidadModel p in formularioViewModel.ListaProductosCantidad)
             {
                 if (p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
                 {
                     p.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
+                    p.Total = p.ProductoModel.Precio * p.Cantidad;
+                    formularioViewModel.TotalFactura = formularioViewModel.TotalFactura + formularioViewModel.ProductoTabla.Total;
                     existe = true;
-                    p.Total = p.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
                     break;
                 }
             }
             if (!existe) 
             {
-                formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
+                formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad;
+                formularioViewModel.TotalFactura = formularioViewModel.TotalFactura + formularioViewModel.ProductoTabla.Total;
                 formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
             }
-
-            //formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);
-
-            /*int lista = formularioViewModel.ListaProductosCantidad.Count();
-            //formularioViewModel.ProductoTabla.ProductoModel = formularioViewModel.CurrentProducto;
-            if(lista == 0)
-            {
-                Console.WriteLine("cdf");
-                formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
-
-            }
-            else
-            {
-                foreach (ProductoCantidadModel p in formularioViewModel.ListaProductosCantidad)
-                {
-                    Console.WriteLine(p.ProductoModel._id);
-                    Console.WriteLine(formularioViewModel.ProductoTabla.ProductoModel._id);
-                    if (p.ProductoModel._id.Equals(formularioViewModel.ProductoTabla.ProductoModel._id))
-                    {
-                        p.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
-                        break;
-                    }
-                    else
-                    {
-                        formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
-                        //break;
-                    }
-                }
-
-            }
-           
-
-            formularioViewModel.Total = formularioViewModel.Total + (formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad);*/
-
-
-
         }
 
         private FormularioViewModel formularioViewModel { set; get; }

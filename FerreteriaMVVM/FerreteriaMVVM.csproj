@@ -52,7 +52,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -105,6 +107,7 @@
     <Compile Include="Commands\EditarProveedoresCommand.cs" />
     <Compile Include="Commands\EliminarProductoDeFacturaCommand.cs" />
     <Compile Include="Commands\FiltrarTablaProductosCommand.cs" />
+    <Compile Include="Commands\GuardarFacturaCommand.cs" />
     <Compile Include="Commands\LimpiarFormularioProductosCommand.cs" />
     <Compile Include="Commands\LimpiarFormularioCommand.cs" />
     <Compile Include="Commands\ProductosCommand.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="Commands\UpdateClientsCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="Models\ClienteModel.cs" />
+    <Compile Include="Models\FacturaModel.cs" />
     <Compile Include="Models\ProductoCantidadModel.cs" />
     <Compile Include="Models\ProductosModel.cs" />
     <Compile Include="Models\ProveedoresModel.cs" />

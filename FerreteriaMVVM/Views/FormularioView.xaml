@@ -96,7 +96,8 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <ListView ItemsSource="{Binding ListaProductosCantidad, UpdateSourceTrigger=PropertyChanged}" >
+                <ListView x:Name="productosFacturaListView" ItemsSource="{Binding ListaProductosCantidad, UpdateSourceTrigger=PropertyChanged}" >
+
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="REF" DisplayMemberBinding="{Binding Path=ProductoModel._id}"/>
@@ -113,9 +114,9 @@
             <StackPanel Grid.Column="3" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="PRODUCTO" VerticalAlignment="Center" FontSize="25" FontWeight="Black"/>
             </StackPanel>
-
+            
             <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Eliminar" Width="200" Height="60" Command="{Binding EliminarProductoDeFactura}" CommandParameter="{Binding ProductoTabla}"/>
+                <Button Content="Eliminar" Width="200" Height="60" Command="{Binding EliminarProductoDeFacturaCommand}" CommandParameter="{Binding ElementName=productosFacturaListView, Path=SelectedItem}"/>
             </StackPanel>
         </Grid>
 
@@ -124,8 +125,8 @@
                 <TextBlock Text="TOTAL FACTURA: " FontSize="30" FontWeight="Black" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding TotalFactura}" Width="100"/>
             </StackPanel>
-            
-            <Button Width="200" Content="CREAR FACTURA"/>
+
+            <Button Width="200" Content="CREAR FACTURA" Command="{Binding GuardarFacturaCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

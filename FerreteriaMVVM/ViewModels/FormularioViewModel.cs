@@ -16,6 +16,8 @@ namespace FerreteriaMVVM.ViewModels
         public ICommand CargarProductosCommand { get; set; }
         public ICommand CargarComboProductosFormularioCommand { get; set; }
         public ICommand AñadirProductoAFacturaCommand { get; set; }
+        public ICommand EliminarProductoDeFacturaCommand { get; set; }
+        public ICommand GuardarFacturaCommand { get; set; }
 
         public DateTime FechaElegida { get; set; }
 
@@ -75,12 +77,24 @@ namespace FerreteriaMVVM.ViewModels
             }
         }
 
+        private double totalFactura{ get; set; }
+        public double TotalFactura
+        {
+            get { return totalFactura; }
+            set
+            {
+                totalFactura = value;
+                OnPropertyChanged(nameof(TotalFactura));
+            }
+        }
 
         public FormularioViewModel()
         {
             UpdateClientsCommand = new UpdateClientsCommand(this);
             CargarComboProductosFormularioCommand = new CargarComboProductosFormularioCommand(this);
             AñadirProductoAFacturaCommand = new AñadirProductoAFacturaCommand(this);
+            EliminarProductoDeFacturaCommand = new EliminarProductoDeFacturaCommand(this);
+            GuardarFacturaCommand = new GuardarFacturaCommand(this);
 
             ListaProductosCantidad = new ObservableCollection<ProductoCantidadModel>();
             ProductoTabla = new ProductoCantidadModel();
