@@ -41,6 +41,9 @@ namespace FerreteriaMVVM.Models
             }
         }
 
+        public ObservableCollection<ProductoCantidadModel> ListaProductosCantidadFactura { get; set; }
+
+
         private double precioTotalFactura{ get; set; }
         public double PrecioTotalFactura
         {

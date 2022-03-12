@@ -32,6 +32,17 @@ namespace FerreteriaMVVM.ViewModels
             }
         }
 
+        private FacturaModel factura { get; set; }
+        public FacturaModel Factura
+        {
+            get { return factura; }
+            set
+            {
+                factura = value;
+                OnPropertyChanged(nameof(Factura));
+            }
+        }
+
         private ObservableCollection<ClienteModel> listaClientes { get; set; }
         public ObservableCollection<ClienteModel> ListaClientes
         {
@@ -95,6 +106,8 @@ namespace FerreteriaMVVM.ViewModels
             AñadirProductoAFacturaCommand = new AñadirProductoAFacturaCommand(this);
             EliminarProductoDeFacturaCommand = new EliminarProductoDeFacturaCommand(this);
             GuardarFacturaCommand = new GuardarFacturaCommand(this);
+
+            Factura = new FacturaModel();
 
             ListaProductosCantidad = new ObservableCollection<ProductoCantidadModel>();
             ProductoTabla = new ProductoCantidadModel();

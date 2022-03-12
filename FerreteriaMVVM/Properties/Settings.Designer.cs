@@ -33,5 +33,16 @@ namespace FerreteriaMVVM.Properties {
                 return ((string)(this["_2dam09ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=infsalinas.sytes.net,10401;Initial Catalog=2dam09;Persist Security In" +
+            "fo=True;User ID=2dam09;Password=50563624X_S22")]
+        public string _2dam09ConnectionString1 {
+            get {
+                return ((string)(this["_2dam09ConnectionString1"]));
+            }
+        }
     }
 }

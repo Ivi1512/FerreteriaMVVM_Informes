@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace FerreteriaMVVM.Views
 {
     /// <summary>
-    /// Lógica de interacción para ConsultasView.xaml
+    /// Lógica de interacción para ReportView.xaml
     /// </summary>
-    public partial class ConsultasView : UserControl
+    public partial class ReportView : UserControl
     {
-        public ConsultasView()
+        public ReportView()
         {
             InitializeComponent();
         }
-
-        
     }
 }

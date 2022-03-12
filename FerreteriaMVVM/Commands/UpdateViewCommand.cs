@@ -40,16 +40,22 @@ namespace FerreteriaMVVM.Commands
             }
             else if (vista.Equals("Consultas"))
             {
-                MainViewModel.SelectedViewModel = new ConsultasViewModel();
+                MainViewModel.SelectedViewModel = new ConsultasViewModel(this);
+            }
+            else if (vista.Equals("report"))
+            {
+                MainViewModel.SelectedViewModel = reportViewModel;
             }
         }
 
         public MainViewModel MainViewModel { set; get; }
+        public ReportViewModel reportViewModel { get; set; }
 
         public UpdateViewCommand(MainViewModel mainViewModel)
         {
             MainViewModel = mainViewModel;
             MainViewModel.SelectedViewModel = new BienvenidaViewModel();
+            reportViewModel = new ReportViewModel();
         }
     }
 }

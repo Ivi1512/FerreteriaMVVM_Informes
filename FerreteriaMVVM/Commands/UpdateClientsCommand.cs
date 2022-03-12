@@ -20,7 +20,14 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            formularioViewModel.ListaClientes = DataSetHandler.getAllClientes();
+            if(parameter.Equals("consulta"))
+            {
+                consultasViewModel.ListaClientes = DataSetHandler.getAllClientes();
+            }
+            else if(parameter.Equals("formulario"))
+            {
+                formularioViewModel.ListaClientes = DataSetHandler.getAllClientes();
+            }
         }
 
 
@@ -28,6 +35,12 @@ namespace FerreteriaMVVM.Commands
         public UpdateClientsCommand(FormularioViewModel formularioViewModel)
         {
             this.formularioViewModel = formularioViewModel;
+        }
+
+        private ConsultasViewModel consultasViewModel { set; get; }
+        public UpdateClientsCommand(ConsultasViewModel consultasViewModel)
+        {
+            this.consultasViewModel = consultasViewModel;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FerreteriaMVVM.Commands
@@ -20,8 +21,18 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            ProductoCantidadModel producto = (ProductoCantidadModel)parameter;
-            formularioViewModel.ListaProductosCantidad.Remove(producto);
+            if(parameter != null)
+            {
+                ProductoCantidadModel producto = (ProductoCantidadModel)parameter;
+                formularioViewModel.Factura.PrecioTotalFactura = formularioViewModel.Factura.PrecioTotalFactura - producto.Total;
+                formularioViewModel.ListaProductosCantidad.Remove(producto);
+                
+            }
+            else
+            {
+                MessageBox.Show("No hay elementos seleccionados");
+            }
+            
         }
 
 

@@ -14,11 +14,72 @@ namespace FerreteriaMVVM.Services.DataSet
     {
         private static clientesTableAdapter clientesAdapter = new clientesTableAdapter();
         private static InformesTableAdapter informesAdapter = new InformesTableAdapter();
+        private static facturaTableAdapter facturasAdapter = new facturaTableAdapter();
+        private static detalleTableAdapter detallesAdapter = new detalleTableAdapter();
 
-        public static DataTable GetDataByIdFactura(string id_factura)
+        public static DataTable GetDataByIdFactura(int id_factura)
         {
             return informesAdapter.GetDataByIdFactura(id_factura);
         }
+
+        public static DataTable GetDataByDNI(string dni)
+        {
+            return informesAdapter.GetDataByDNICliente(dni);
+        }
+
+        public static DataTable GetDataByFecha(DateTime fecha)
+        {
+            return informesAdapter.GetDataByFecha(fecha.ToString());
+        }
+
+        public static DataTable GetDataByDNIFechas(string dni, DateTime fechaI, DateTime fechaF)
+        {
+            return informesAdapter.GetDataByClienteFechas(dni, fechaI.ToString(), fechaF.ToString());
+        }
+
+        public static DataTable GetDataByFechas(DateTime fechaI, DateTime fechaF)
+        {
+            return informesAdapter.GetDataByFechas(fechaI.ToString(), fechaF.ToString());
+        }
+
+        public static bool insertarFactura(FacturaModel factura)
+        {
+            try
+            {
+                facturasAdapter.Insert(factura.FechaFactura, (decimal?)factura.PrecioTotalFactura, factura.ClienteFactura.DNI);
+                DataRow ultimoRegistro = facturasAdapter.GetData().Last();
+                int idUltimaFactura = (int)ultimoRegistro["id_factura"];
+                foreach (ProductoCantidadModel p in factura.ListaProductosCantidadFactura)
+                {
+                    detallesAdapter.Insert(p.ProductoModel.Descripcion, p.Cantidad, (decimal?)p.ProductoModel.Precio, p.ProductoModel._id, idUltimaFactura);
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+        public static string GetClienteByDNI(string dni)
+        {
+            try
+            {
+                DataTable clienteDT = informesAdapter.GetDataByDNICliente(dni);
+                DataRow clienteRow = clienteDT.Rows[0];
+                string dniCliente = (string)clienteRow["DNI"];
+                return dniCliente;
+            }
+            catch
+            {
+                return "";
+            }
+
+        }
+
 
         public static ObservableCollection<ClienteModel> getAllClientes()
         {

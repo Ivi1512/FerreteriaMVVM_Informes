@@ -30,7 +30,6 @@ namespace FerreteriaMVVM.Commands
                 {
                     p.Cantidad = formularioViewModel.ProductoTabla.Cantidad + p.Cantidad;
                     p.Total = p.ProductoModel.Precio * p.Cantidad;
-                    formularioViewModel.TotalFactura = formularioViewModel.TotalFactura + formularioViewModel.ProductoTabla.Total;
                     existe = true;
                     break;
                 }
@@ -38,9 +37,10 @@ namespace FerreteriaMVVM.Commands
             if (!existe) 
             {
                 formularioViewModel.ProductoTabla.Total = formularioViewModel.ProductoTabla.ProductoModel.Precio * formularioViewModel.ProductoTabla.Cantidad;
-                formularioViewModel.TotalFactura = formularioViewModel.TotalFactura + formularioViewModel.ProductoTabla.Total;
                 formularioViewModel.ListaProductosCantidad.Add((ProductoCantidadModel)formularioViewModel.ProductoTabla.Clone());
             }
+
+            formularioViewModel.Factura.PrecioTotalFactura = formularioViewModel.Factura.PrecioTotalFactura + formularioViewModel.ProductoTabla.Cantidad * formularioViewModel.ProductoTabla.ProductoModel.Precio;
         }
 
         private FormularioViewModel formularioViewModel { set; get; }

@@ -4,8 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FerreteriaMVVM.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1500" Background="White">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding UpdateClientsCommand}" CommandParameter="consulta"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,8 +39,8 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,30,0,30">
             <TextBlock Text="Nº de Factura" FontSize="20"/>
-            <TextBox Width="250"  Margin="60,0,60,0"/>
-            <Button Content="CONSULTA"/>
+            <TextBox Width="250"  Margin="60,0,60,0" Text="{Binding IdFactura}"/>
+            <Button Content="CONSULTA" Command="{Binding ConsultarPorIdFacturaCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
@@ -41,8 +49,8 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
             <TextBlock Text="Cliente" FontSize="20"/>
-            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" Margin="60,0,60,0"/>
-            <Button Content="CONSULTA"/>
+            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" SelectedItem="{Binding Cliente}" Margin="60,0,60,0"/>
+            <Button Content="CONSULTA" Command="{Binding ConsultaPorDNIClienteCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
@@ -52,7 +60,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
             <TextBlock Text="Fecha Factura" FontSize="20"/>
             <DatePicker Width="200" SelectedDate="{Binding FechaSeleccionada}" Margin="60,0,60,0"/>
-            <Button Content="CONSULTA"/>
+            <Button Content="CONSULTA" Command="{Binding ConsultarPorFechaCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Bottom">
@@ -61,12 +69,12 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,30">
             <TextBlock Text="Cliente" FontSize="20"/>
-            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" Margin="10,0,30,0"/>
+            <ComboBox Width="350" ItemsSource="{Binding ListaClientes}" SelectedItem="{Binding Cliente}" Margin="10,0,30,0"/>
             <TextBlock Text="Fecha Inicio" FontSize="20"/>
             <DatePicker Width="200" SelectedDate="{Binding FechaInicio}" Margin="10,0,30,0"/>
             <TextBlock Text="Fecha Fin" FontSize="20"/>
             <DatePicker Width="200" SelectedDate="{Binding FechaFin}" Margin="10,0,60,0"/>
-            <Button Content="CONSULTA"/>
+            <Button Content="CONSULTA" Command="{Binding ConsultarPorDNIFechasCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

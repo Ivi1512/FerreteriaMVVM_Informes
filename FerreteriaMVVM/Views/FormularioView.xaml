@@ -31,15 +31,15 @@
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <TextBlock Text="FACTURA" HorizontalAlignment="Center" FontSize="30" FontWeight="Black"/>
             <TextBlock Text="Fecha" HorizontalAlignment="Center" FontSize="25" FontWeight="Black"/>
-            <DatePicker SelectedDate="{Binding FechaElegida, StringFormat=dd-MM-yyyy}" Width="250" Height="40"/>
+            <DatePicker SelectedDate="{Binding Factura.FechaFactura, StringFormat=dd-MM-yyyy}" Width="250" Height="40"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
             <TextBlock Text="Cliente" HorizontalAlignment="Center" FontSize="25" FontWeight="Black"/>
-            <ComboBox Width="400" Height="60" ItemsSource="{Binding ListaClientes}">
+            <ComboBox Width="400" Height="60" SelectedItem="{Binding Factura.ClienteFactura}" ItemsSource="{Binding ListaClientes}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="DropDownOpened">
-                        <i:InvokeCommandAction Command="{Binding UpdateClientsCommand}"/>
+                        <i:InvokeCommandAction Command="{Binding UpdateClientsCommand}" CommandParameter="formulario"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
@@ -123,7 +123,7 @@
         <StackPanel Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
                 <TextBlock Text="TOTAL FACTURA: " FontSize="30" FontWeight="Black" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding TotalFactura}" Width="100"/>
+                <TextBlock Text="{Binding Factura.PrecioTotalFactura}" Width="100"/>
             </StackPanel>
 
             <Button Width="200" Content="CREAR FACTURA" Command="{Binding GuardarFacturaCommand}"/>
