@@ -109,9 +109,10 @@ namespace FerreteriaMVVM.ViewModels
 
             Factura = new FacturaModel();
 
+            factura.ClienteFactura = new ClienteModel();
             ListaProductosCantidad = new ObservableCollection<ProductoCantidadModel>();
             ProductoTabla = new ProductoCantidadModel();
-            FechaElegida = DateTime.Today;
+            Factura.FechaFactura = DateTime.Today;
             ListaClientes = new ObservableCollection<ClienteModel>();
             ProductoTabla.Cantidad = 1;
         }

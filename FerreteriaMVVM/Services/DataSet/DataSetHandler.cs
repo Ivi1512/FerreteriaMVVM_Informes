@@ -68,7 +68,7 @@ namespace FerreteriaMVVM.Services.DataSet
         {
             try
             {
-                DataTable clienteDT = informesAdapter.GetDataByDNICliente(dni);
+                DataTable clienteDT = clientesAdapter.GetDataByDNICliente(dni);
                 DataRow clienteRow = clienteDT.Rows[0];
                 string dniCliente = (string)clienteRow["DNI"];
                 return dniCliente;

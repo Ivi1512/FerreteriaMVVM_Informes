@@ -123,7 +123,7 @@ namespace FerreteriaMVVM.ViewModels
             {
                 rds.Value = dt;
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeDNIFechas.rdlc";
+                myReport.LocalReport.ReportPath = "../../Reports/InformeFecha.rdlc";
                 //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);

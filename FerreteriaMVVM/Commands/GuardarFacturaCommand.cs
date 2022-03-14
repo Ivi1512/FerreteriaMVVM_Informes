@@ -22,26 +22,35 @@ namespace FerreteriaMVVM.Commands
 
         public void Execute(object parameter)
         {
-            formularioViewModel.Factura.ListaProductosCantidadFactura = formularioViewModel.ListaProductosCantidad;
-            string dni = DataSetHandler.GetClienteByDNI(formularioViewModel.Factura.ClienteFactura.DNI);
-            if(dni.Equals(""))
+            int numProductosSeleccionados = formularioViewModel.ListaProductosCantidad.Count();
+            if(numProductosSeleccionados <= 0 )
             {
-                MessageBox.Show("El DNI no existe");
+                MessageBox.Show("Debes añadir poductos a la factura");
             }
             else
             {
-                formularioViewModel.Factura.ClienteFactura.DNI = dni;
-                bool insertarOK = DataSetHandler.insertarFactura(formularioViewModel.Factura);
-                if (!insertarOK)
+                formularioViewModel.Factura.ListaProductosCantidadFactura = formularioViewModel.ListaProductosCantidad;
+                string dni = DataSetHandler.GetClienteByDNI(formularioViewModel.Factura.ClienteFactura.DNI);
+                if (dni.Equals(""))
                 {
-                    MessageBox.Show("No se pudo Insertar, llama al servicio técnico: 922335687");
+                    MessageBox.Show("Debes seleccionar un cliente");
                 }
                 else
                 {
-                    MessageBox.Show("La Factura se ha registrado correctamente");
-                    formularioViewModel.Factura = new FacturaModel();
+                    formularioViewModel.Factura.ClienteFactura.DNI = dni;
+                    bool insertarOK = DataSetHandler.insertarFactura(formularioViewModel.Factura);
+                    if (!insertarOK)
+                    {
+                        MessageBox.Show("No se pudo Insertar, llama al servicio técnico: 922335687");
+                    }
+                    else
+                    {
+                        MessageBox.Show("La Factura se ha registrado correctamente");
+                        formularioViewModel.Factura = new FacturaModel();
+                    }
                 }
             }
+            
         }
 
         private FormularioViewModel formularioViewModel { set; get; }
