@@ -253,9 +253,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\InformeDNIFechas.rdlc" />
-    <EmbeddedResource Include="Reports\InformeFecha.rdlc" />
     <EmbeddedResource Include="Reports\InformeCliente.rdlc" />
+    <EmbeddedResource Include="Reports\InformeFecha.rdlc" />
+    <EmbeddedResource Include="Reports\InformeDNIFechas.rdlc" />
     <EmbeddedResource Include="Reports\InformeNumFactura.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
