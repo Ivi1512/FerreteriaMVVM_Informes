@@ -36,8 +36,8 @@ namespace FerreteriaMVVM.ViewModels
             {
                 rds.Value = dt;
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeNumFactura.rdlc";
-                //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeNumFactura);
+                //myReport.LocalReport.ReportPath = "../../Reports/InformeNumFactura.rdlc";
+                myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeNumFactura);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
                 return true;
@@ -58,8 +58,8 @@ namespace FerreteriaMVVM.ViewModels
                 rds.Value = dt;
                 rds.Value = DataSetHandler.GetDataByDNI(dni);
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeCliente.rdlc";
-                //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
+                //myReport.LocalReport.ReportPath = "../../Reports/InformeCliente.rdlc";
+                myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
                 return true;
@@ -80,8 +80,8 @@ namespace FerreteriaMVVM.ViewModels
                 rds.Value = dt;
                 rds.Value = DataSetHandler.GetDataByFecha(fecha);
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeFecha.rdlc";
-                //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
+                //myReport.LocalReport.ReportPath = "../../Reports/InformeFecha.rdlc";
+                myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeFecha);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
                 return true;
@@ -102,8 +102,8 @@ namespace FerreteriaMVVM.ViewModels
             {
                 rds.Value = dt;
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeDNIFechas.rdlc";
-                //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
+                //myReport.LocalReport.ReportPath = "../../Reports/InformeCliente.rdlc";
+                myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
                 return true;
@@ -123,8 +123,8 @@ namespace FerreteriaMVVM.ViewModels
             {
                 rds.Value = dt;
                 myReport.LocalReport.DataSources.Add(rds);
-                myReport.LocalReport.ReportPath = "../../Reports/InformeFecha.rdlc";
-                //myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeCliente);
+                //myReport.LocalReport.ReportPath = "../../Reports/InformeFecha.rdlc";
+                myReport.LocalReport.ReportPath = System.IO.Path.Combine(CurrentPath, InformeFecha);
                 byte[] PDFBytes = myReport.LocalReport.Render(format: "PDF", deviceInfo: "");
                 pdfData = "data:application/pdf;base64," + Convert.ToBase64String(PDFBytes);
                 return true;
